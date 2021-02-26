@@ -1,10 +1,18 @@
 import * as mongoose from 'mongoose'
-import { MONGO_URI, PORT } from '../config/keys'
 import { Server, Socket } from 'socket.io'
+
+import middleware from './webServerMiddleWare'
 import websocket from '../websocket/websocket'
+import { MONGO_URI, PORT } from '../config/keys'
 
 const app = require('express')()
-let http = require('http').Server(app)
+let http = require('http').Server(app);
+const io = new Server(http, {})
+
+middleware(app)
+
+io.attach(http)
+io.on('connection', (socket: Socket) => websocket(socket))
 
 mongoose.connect(MONGO_URI, { 
     useNewUrlParser: true, 
@@ -13,10 +21,6 @@ mongoose.connect(MONGO_URI, {
     if (err) console.log('Error on MongoDB connection', err)
     else console.log('Connected to MongoDB')
 })
-
-const io = new Server(http, {})
-io.attach(http)
-io.on('connection', (socket: Socket) => websocket(socket))
 
 export default http.listen(PORT, () => {
     console.log(`Server runs on ${PORT}`)
