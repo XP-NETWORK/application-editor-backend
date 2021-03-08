@@ -31,6 +31,7 @@ schema.set('toObject', {
 })
 
 
+
 const App: IAppModel = model<IAppDocument, IAppModel>('Apps', schema)
 export default App
 export {
