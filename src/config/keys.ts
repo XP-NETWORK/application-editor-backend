@@ -5,5 +5,6 @@ export const IS_PROD: boolean = process.env.NODE_ENV === 'production'
 
 export const MONGO_COLLECTIONS = {
     Sections: 'Sections'.toLowerCase(),
+    Apps: 'Apps'.toLowerCase(),
     Pages: 'Pages'.toLowerCase()
 }
