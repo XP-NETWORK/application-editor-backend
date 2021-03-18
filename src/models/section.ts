@@ -7,11 +7,12 @@ import {
 } from './interfaces/section'
 import { CustomDocumentBuild } from '../@tools/mongodb/documentDefaults'
 import { MONGO_COLLECTIONS } from '../config/keys'
+import { SectionTypeSpread } from '../enum/sectionTypeEnum'
 
 export const docSection = {
     SectionId: { type: Schema.Types.ObjectId },
     index: { type: Schema.Types.Number },
-    type: { type: Schema.Types.String },
+    type: { type: Schema.Types.String, enum: [...SectionTypeSpread()] },
     data: { type: Schema.Types.Mixed } // section's datas to be explained in types
 }
 
