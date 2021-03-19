@@ -5,8 +5,8 @@ import {
     IAppDocument, 
     IAppModel, 
 } from './interfaces/app'
-import { CustomDocumentBuild } from '../@tools/mongodb/documentDefaults'
-import { MONGO_COLLECTIONS } from '../config/keys'
+import { CustomDocumentBuild } from '../../@tools/mongodb/documentDefaults'
+import { MONGO_COLLECTIONS } from '../../config/keys'
 
 export const docApp = {
     userId: { type: Schema.Types.ObjectId },

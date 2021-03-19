@@ -5,8 +5,8 @@ import {
     IPageDocument, 
     IPageModel, 
 } from './interfaces/page'
-import { CustomDocumentBuild } from '../@tools/mongodb/documentDefaults'
-import { MONGO_COLLECTIONS } from '../config/keys'
+import { CustomDocumentBuild } from '../../@tools/mongodb/documentDefaults'
+import { MONGO_COLLECTIONS } from '../../config/keys'
 
 export const docPage = {
     appId: { type: Schema.Types.ObjectId },

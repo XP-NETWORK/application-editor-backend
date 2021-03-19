@@ -5,9 +5,9 @@ import {
     ISectionDocument, 
     ISectionModel, 
 } from './interfaces/section'
-import { CustomDocumentBuild } from '../@tools/mongodb/documentDefaults'
-import { MONGO_COLLECTIONS } from '../config/keys'
-import { SectionTypeSpread } from '../enum/sectionTypeEnum'
+import { CustomDocumentBuild } from '../../@tools/mongodb/documentDefaults'
+import { MONGO_COLLECTIONS } from '../../config/keys'
+import { SectionTypeSpread } from '../../enum/sectionTypeEnum'
 
 export const docSection = {
     SectionId: { type: Schema.Types.ObjectId },
