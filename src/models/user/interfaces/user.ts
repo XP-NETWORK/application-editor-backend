@@ -1,5 +1,6 @@
 import { Document, Model } from 'mongoose'
 import { ObjectId } from 'mongodb'
+export const USER_EMAIL_EXISTS = 'This email already exists'
 
 export interface IUser {
     password: string
@@ -18,4 +19,5 @@ export interface IUserModel extends Model<IUserDocument> {
     removeById(id: ObjectId): Promise<boolean>
     updateById(id: ObjectId, doc: IUser): Promise<IUserDocument>
     createNew(doc: IUser): Promise<IUserDocument>
+    doesEmailExist(email: string): Promise<IUserDocument>
 }

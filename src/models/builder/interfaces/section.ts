@@ -1,6 +1,6 @@
 import { Document, Model } from 'mongoose'
 import { ObjectId } from 'mongodb'
-import { SectionType } from '../../enum/sectionTypeEnum'
+import { SectionType } from '../../../enum/sectionTypeEnum'
 
 export interface ISection {
     pageId: ObjectId
