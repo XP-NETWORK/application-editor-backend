@@ -22,4 +22,5 @@ export interface IUserModel extends Model<IUserDocument> {
     updateById(id: ObjectId, doc: IUser): Promise<IUserDocument>
     createNew(doc: IUser): Promise<IUserDocument>
     doesEmailExist(email: string): Promise<IUserDocument>
+    login(email: string, password: string): Promise<IUserLogin>
 }
