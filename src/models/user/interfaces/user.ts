@@ -9,6 +9,10 @@ export interface IUser {
     email: string
     lowerCaseEmail: string
 }
+export interface IUserLogin {
+    user: IUserDocument
+    message: string
+}
 
 // Instance methods
 export interface IUserDocument extends IUser, Document {
