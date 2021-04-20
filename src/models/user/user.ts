@@ -12,7 +12,7 @@ import {
 } from './interfaces/user'
 import { MONGO_COLLECTIONS } from '../../config/keys'
 import { CustomDocumentBuild } from '../../@tools/mongodb/documentDefaults'
-import { hashString } from '../../config/string'
+import { hashString } from '../../@tools/string'
 
 export const docUser = {
     password: { type: Schema.Types.String },
