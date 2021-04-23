@@ -11,7 +11,10 @@ export const docRefreshToken = {
 
 export const schema = CustomDocumentBuild(docRefreshToken)
 
-
+schema.statics.getByToken = async function getByToken(token: string) {
+    const query = this.findOne({ token })
+    return query.exec().then((token: IRefreshTokenDocument) => token ? token : undefined)
+}
 
 /**
  * MODEL RefreshToken, used for interactions with MongoDB
