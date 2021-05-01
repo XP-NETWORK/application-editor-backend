@@ -1,10 +1,24 @@
+import { ObjectId } from 'mongodb'
+import { v4 as uuidv4 } from 'uuid'
+
+
 import User, { IUserDocument } from '../../models/user/user'
 import { 
     USER_DOES_NOT_EXIST, 
     USER_LOGIN_INCORRECT_PASSWORD, 
     USER_SUCCESSFUL_LOGIN 
 } from '../../models/user/interfaces/user'
+import RefreshToken, { IRefreshToken } from '../../models/user/refreshToken'
+
 export class AuthenticationService {
+
+
+    async createRefreshToken(userId: ObjectId): Promise<string | undefined> {
+        const token = uuidv4()
+        const d: IRefreshToken = { userId, token }
+        const document = await RefreshToken.createNew(d)
+        return document ? token : undefined
+    }
 
     async login(email: string, password: string) {
         const login = await User.login(email, password)
