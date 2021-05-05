@@ -1,4 +1,5 @@
 import { ObjectId } from 'mongodb'
+import * as jwt from 'jsonwebtoken'
 import { v4 as uuidv4 } from 'uuid'
 
 
@@ -9,9 +10,24 @@ import {
     USER_SUCCESSFUL_LOGIN 
 } from '../../models/user/interfaces/user'
 import RefreshToken, { IRefreshToken } from '../../models/user/refreshToken'
-
+import { SECRET_KEY } from '../../config/keys'
+import { UserAuthenticated } from './types'
 export class AuthenticationService {
-
+    async createJWT(user: IUserDocument): Promise<UserAuthenticated> {
+        const {  email, _id } = user
+            const token = jwt.sign({
+                    email,
+                    _id,
+                }, SECRET_KEY, { expiresIn: '15m' }
+            )
+            let refreshToken = await this.createRefreshToken(_id)
+            while(!refreshToken) refreshToken = await this.createRefreshToken(_id)
+            const result = {
+                token,
+                refreshToken,
+            }
+        return result
+    }
 
     async createRefreshToken(userId: ObjectId): Promise<string | undefined> {
         const token = uuidv4()
