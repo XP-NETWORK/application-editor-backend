@@ -18,7 +18,7 @@ schema.statics.getByToken = async function getByToken(token: string) {
 
 /**
  * MODEL RefreshToken, used for interactions with MongoDB
- */
+*/
 const RefreshToken: IRefreshTokenModel = model<IRefreshTokenDocument, IRefreshTokenModel>(MONGO_COLLECTIONS.RefreshTokens, schema)
 export default RefreshToken
 export {
