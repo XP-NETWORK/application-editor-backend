@@ -43,6 +43,7 @@ export class AuthenticationService {
         const document = await RefreshToken.createNew(d)
         return document ? token : undefined
     }
+    //
     /**
      * Validates user login
      * @param email - User's email address
