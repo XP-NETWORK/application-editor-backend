@@ -57,6 +57,6 @@ export class AuthenticationService {
             if(message === USER_SUCCESSFUL_LOGIN) {
                 return await this.createJWT(login.user)
             } else if(failedLogin) return message
-        } 
+        }
     }
 } 
